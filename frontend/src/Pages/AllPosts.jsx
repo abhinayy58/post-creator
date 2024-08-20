@@ -34,6 +34,7 @@ const AllPosts = () => {
         />
       ))}
       {loading && <Loader />}
+      {!allPost.length && <p className="m-auto font-bold">No Post Available</p>}
     </div>
     </section>
   );
