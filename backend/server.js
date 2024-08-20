@@ -14,14 +14,13 @@ app.use(express.json());
 app.use("/api/v1", postRoute);
 
 if (process.env.NODE_ENV === "production") {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
-  app.use(express.static(path.join(__dirname, "/dist")));
-
-  // react app
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "frontends/dist")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "frontends", "dist", "index.html"));
   });
+} else {
+  app.get("/", (req, res) => res.send("Server is Ready"));
 }
 
 connectDB().then(() => {
