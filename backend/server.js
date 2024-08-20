@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 
 app.use(express.json());
 
-app.use("/api/v1", postRoute);
+app.use("/api/v1", postRoute);  
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
