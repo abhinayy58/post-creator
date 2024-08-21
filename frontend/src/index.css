@@ -19,32 +19,36 @@ font-synthesis: none;
 
 
 .ql-editor {
-  min-height:45vh;
+  min-height:10px;
 }
 
-@media screen and (min-device-width: 375px) and (max-device-width: 768px) {
+@media screen and (min-device-width: 374px) and (max-device-width: 768px) {
   .ql-editor {
-    min-height:30vh;
+    height:10vh;
   }
 }
 
 @media screen and (min-device-width: 769px) and (max-device-width: 1350px) {
   .ql-editor {
-    min-height:40vh;
+    height:40vh;
   }
 }
 
-/* @media screen and (min-device-width: 1351px) and (max-device-width: 1850px) {
+@media screen and (min-device-width: 1351px) and (max-device-width: 1850px) {
   .ql-editor {
-    min-height:40vh;
+   min-height: 350px;
   }
-} */
+}
+@media screen and (min-device-width: 1851px) and (max-device-width: 3600px) {
+  .ql-editor {
+   min-height: 800px;
+  }
+}
 
 
 .ql-editor {
   overflow-y: scroll;
   resize: vertical;
-  height: 30vh;
 }
 
 .quill {
