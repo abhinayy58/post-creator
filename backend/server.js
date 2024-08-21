@@ -1,7 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 import cors from 'cors';
 import connectDB from "./config/dbConnect.js";
 import postRoute from "./routes/post.route.js";
@@ -26,13 +27,14 @@ app.use(cors({
 app.use("/api/posts", postRoute);  
  
 if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "frontend/dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => res.send("Server is Ready"));
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+	app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+	// react app
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+	});
 }
 
 process.on("uncaughtException", function (err) {
