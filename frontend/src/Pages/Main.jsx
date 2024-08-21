@@ -18,7 +18,7 @@ const Main = () => {
   };
   const submitHandler = async(e) => {
     e.preventDefault();
-    await fetch("/api/v1/posts", {
+    await fetch("/api/posts", {
       method:'POST',
       headers: {
         "Content-Type": "application/json",

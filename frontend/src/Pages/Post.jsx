@@ -7,9 +7,9 @@ const Post = () => {
 
   const [post, setPost] = useState([]);
   const [loading,setLoading] = useState(false)
-  const getPost = async () => {
+  const getPost = async() => {
     setLoading(true)
-    await fetch(`/api/v1/posts/${postId}`)
+    await fetch(`/api/posts/${postId}`)
       .then((response) => response.json())
       .then((result) => {
         setPost(result.post);

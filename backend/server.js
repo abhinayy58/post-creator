@@ -15,7 +15,7 @@ app.use(cors({
   origin: '*', // or '*' to allow all origins
 }));
 
-app.use("/api/v1/posts", postRoute);  
+app.use("/api/posts", postRoute);  
  
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
@@ -27,9 +27,13 @@ if (process.env.NODE_ENV === "production") {
   app.get("/", (req, res) => res.send("Server is Ready"));
 }
 
-connectDB().then(() => {
-  app.listen(port, () => {
-    console.log(`server is running on port ${port}`);
-  });
+process.on("uncaughtException", function (err) {
+  console.log(err);
+  process.exit(1);
+}); 
+ 
+app.listen(port, () => {
+  connectDB();
+  console.log(`Server is running on port ${port}`);
 });
  

@@ -7,7 +7,7 @@ const AllPosts = () => {
   const [loading,setLoading] = useState(false)
   const getAllPost = async () => {
     setLoading(true)
-    await fetch("/api/v1/posts")
+    await fetch("/api/posts")
       .then((response) => response.json())
       .then((result) => {
         setAllPost(result.post);
