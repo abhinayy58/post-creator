@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SinglePost = ({ title, description, id }) => {
   const navigate= useNavigate()
   const deletePost = async () => {
-    await fetch(`/api/v1/posts/${id}`,{
+    await fetch(`/api/posts/${id}`,{
       method:"DELETE"
     })
       .then((response) => response.json())
