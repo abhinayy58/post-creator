@@ -12,22 +12,8 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 
-var whitelist = ['http://localhost:3000/', 'https://post-creator-assignment.onrender.com/']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-
 
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors(corsOptions)
-);
 app.use(express.json());
 
 morgan.token("body", (req) => JSON.stringify(req.body));
@@ -43,9 +29,8 @@ app.use("/api/posts", postRoute);
 if (process.env.NODE_ENV === "production") {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.use(express.static(path.join(__dirname, '..', "frontend" ,"dist")));
 
-  // react app
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });

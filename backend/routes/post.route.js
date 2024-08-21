@@ -8,7 +8,9 @@ import {
 } from "../controllers/post.controller.js";
 const router = express.Router();
 
-router.route("/").get(getPosts).post(createPost);
-router.route("/:id").get(getPost).delete(deletePost);
+router.get("/", getPosts);
+router.post("/", createPost);
+router.get("/:id", getPost);
+router.delete("/:id", deletePost);
 
 export default router;
