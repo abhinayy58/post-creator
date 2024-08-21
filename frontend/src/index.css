@@ -39,7 +39,7 @@
 }
 @media screen and (min-device-width: 1851px) and (max-device-width: 3600px) {
   .ql-editor {
-    min-height: 550px;
+    min-height: 500px;
   }
 }
 
