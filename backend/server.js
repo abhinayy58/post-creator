@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+import path from "path";
+import cors from 'cors';
 import connectDB from "./config/dbConnect.js";
 import postRoute from "./routes/post.route.js";
 dotenv.config();
@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors({
+  origin: '*', // or '*' to allow all origins
+}));
 
 app.use("/api/v1/posts", postRoute);  
  
