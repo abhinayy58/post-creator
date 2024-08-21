@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 import dotenv from "dotenv";
 import path from "path";
 import cors from 'cors';
@@ -9,6 +10,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
+
+morgan.token("body", (req) => JSON.stringify(req.body));
+app.use(
+  morgan(
+    ':method :status :url :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
+  )
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
