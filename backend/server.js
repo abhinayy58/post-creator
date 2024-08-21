@@ -11,22 +11,32 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
+
+var whitelist = ['http://localhost:3000/', 'https://post-creator-assignment.onrender.com/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors(corsOptions)
+);
+app.use(express.json());
+
 morgan.token("body", (req) => JSON.stringify(req.body));
 app.use(
   morgan(
     ':method :status :url :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
   )
 );
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-  })
-);
+
 
 app.use("/api/posts", postRoute);
 
