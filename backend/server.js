@@ -12,7 +12,7 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 
 app.use("/api/v1", postRoute);  
-
+ 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
   app.use(express.static(path.join(__dirname, "frontend/dist")));
@@ -28,3 +28,4 @@ connectDB().then(() => {
     console.log(`server is running on port ${port}`);
   });
 });
+ 
