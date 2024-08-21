@@ -1,50 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400; 
+  font-weight: 400;
 
   /* color-scheme: light dark; */
   /* color: rgba(255, 255, 255, 0.87); */
 
-font-synthesis: none;
+  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .ql-editor {
-  min-height:10px;
+  min-height: 10px;
 }
 
 @media screen and (min-device-width: 374px) and (max-device-width: 768px) {
   .ql-editor {
-    height:10vh;
+    height: 10vh;
   }
 }
 
 @media screen and (min-device-width: 769px) and (max-device-width: 1350px) {
   .ql-editor {
-    height:40vh;
+    height: 40vh;
   }
 }
 
 @media screen and (min-device-width: 1351px) and (max-device-width: 1850px) {
   .ql-editor {
-   min-height: 350px;
+    min-height: 350px;
   }
 }
 @media screen and (min-device-width: 1851px) and (max-device-width: 3600px) {
   .ql-editor {
-   min-height: 800px;
+    min-height: 550px;
   }
 }
-
 
 .ql-editor {
   overflow-y: scroll;
@@ -56,12 +53,12 @@ font-synthesis: none;
   width: 100%;
   margin: auto;
 }
- 
+
 .loader {
   margin: auto;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3795BD;
+  border-top: 16px solid #3795bd;
   width: 120px;
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -69,6 +66,10 @@ font-synthesis: none;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
